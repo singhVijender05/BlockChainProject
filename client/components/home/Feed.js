@@ -39,6 +39,7 @@ function Feed() {
             4,
           )}...${tweet.author.walletAddress.slice(41)}`}
           text={tweet.tweet}
+          postImage={tweet.fileUrl}
           avatar={tweet.author.profileImage}
           isProfileImageNft={tweet.author.isProfileImageNft}
           timestamp={tweet.timestamp}

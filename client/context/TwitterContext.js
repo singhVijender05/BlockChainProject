@@ -123,6 +123,7 @@ export const TwitterProvider = ({ children }) => {
       *[_type == "tweets"]{
         "author": author->{name, walletAddress, profileImage, isProfileImageNft},
         tweet,
+        fileUrl,
         timestamp
       }|order(timestamp desc)
     `;
@@ -142,10 +143,10 @@ export const TwitterProvider = ({ children }) => {
         item.author.isProfileImageNft
       );
 
-      if (item.author.isProfileImageNft) {
         const newItem = {
           tweet: item.tweet,
           timestamp: item.timestamp,
+          fileUrl: item.fileUrl,
           author: {
             name: item.author.name,
             walletAddress: item.author.walletAddress,
@@ -155,9 +156,7 @@ export const TwitterProvider = ({ children }) => {
         };
 
         setTweets((prevState) => [...prevState, newItem]);
-      } else {
-        setTweets((prevState) => [...prevState, item]);
-      }
+
     });
   };
 
@@ -171,7 +170,7 @@ export const TwitterProvider = ({ children }) => {
 
     const query = `
       *[_type == "users" && _id == "${userAccount}"]{
-        "tweets": tweets[]->{timestamp, tweet}|order(timestamp desc),
+        "tweets": tweets[]->{timestamp,tweet,fileUrl}|order(timestamp desc),
         name,
         profileImage,
         isProfileImageNft,

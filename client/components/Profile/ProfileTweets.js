@@ -13,6 +13,7 @@ const ProfileTweets = ()=>{
     return(
         <div className={style.wrapper}>
         {currentUser.tweets?.map((tweet, index) => (
+          console.log("file url received in rendering tweets ",tweet),
           <Post
           key={index}
           displayName={
@@ -28,6 +29,7 @@ const ProfileTweets = ()=>{
             4
           )}...${currentAccount.slice(41)}`}
           text={tweet.tweet}
+          postImage={tweet.fileUrl}
           avatar={currentUser.profileImage}
           timestamp={tweet.timestamp}
           isProfileImageNft={currentUser.isProfileImageNft}

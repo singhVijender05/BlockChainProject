@@ -14,6 +14,11 @@ export const tweetSchema = {
         title: 'Timestamp',
       },
       {
+        name: 'fileUrl',
+        type: 'string',
+        title: 'File Url',
+      },
+      {
         name: 'author',
         title: 'Author',
         type: 'reference',
